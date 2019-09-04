@@ -41,29 +41,7 @@ module.exports = {
         'contentType',
         'createdAt',
         'updatedAt'
-      ]).modify(queryBuilder => {
-        if (args.limit) {
-          queryBuilder.limit(args.limit)
-        }
-        const orderDir = args.orderByDirection === 'DESC' ? 'desc' : 'asc'
-        switch (args.orderBy) {
-          case 'CREATED':
-            queryBuilder.orderBy('createdAt', orderDir)
-            break
-          case 'PATH':
-            queryBuilder.orderBy('path', orderDir)
-            break
-          case 'TITLE':
-            queryBuilder.orderBy('title', orderDir)
-            break
-          case 'UPDATED':
-            queryBuilder.orderBy('updatedAt', orderDir)
-            break
-          default:
-            queryBuilder.orderBy('id', orderDir)
-            break
-        }
-      })
+      ])
     },
     async single (obj, args, context, info) {
       let page = await WIKI.models.pages.getPageFromDb(args.id)
@@ -76,9 +54,6 @@ module.exports = {
       } else {
         throw new WIKI.Error.PageNotFound()
       }
-    },
-    async tags (obj, args, context, info) {
-      return WIKI.models.tags.query().orderBy('tag', 'asc')
     }
   },
   PageMutation: {

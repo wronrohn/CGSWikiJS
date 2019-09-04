@@ -27,17 +27,11 @@ type PageQuery {
     locale: String
   ): PageSearchResponse! @auth(requires: ["manage:system", "read:pages"])
 
-  list(
-    limit: Int
-    orderBy: PageOrderBy
-    orderByDirection: PageOrderByDirection
-  ): [PageListItem!]! @auth(requires: ["manage:system"])
+  list: [PageListItem!]! @auth(requires: ["manage:system"])
 
   single(
     id: Int!
   ): Page @auth(requires: ["manage:pages", "delete:pages", "manage:system"])
-
-  tags: [PageTag]! @auth(requires: ["manage:system", "read:pages"])
 }
 
 # -----------------------------------------------
@@ -111,7 +105,6 @@ type Page {
   privateNS: String
   publishStartDate: Date!
   publishEndDate: String!
-  tags: [PageTag]!
   content: String!
   render: String
   toc: String
@@ -126,14 +119,6 @@ type Page {
   creatorId: Int!
   creatorName: String!
   creatorEmail: String!
-}
-
-type PageTag {
-  id: Int!
-  tag: String!
-  title: String
-  createdAt: Date!
-  updatedAt: Date!
 }
 
 type PageHistory {
@@ -177,17 +162,4 @@ type PageListItem {
   privateNS: String
   createdAt: Date!
   updatedAt: Date!
-}
-
-enum PageOrderBy {
-  CREATED
-  ID
-  PATH
-  TITLE
-  UPDATED
-}
-
-enum PageOrderByDirection {
-  ASC
-  DESC
 }
