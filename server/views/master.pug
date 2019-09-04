@@ -1,0 +1,89 @@
+doctype html
+html(lang=siteConfig.lang)
+  head
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='UTF-8')
+    meta(name='viewport', content='user-scalable=yes, width=device-width, initial-scale=1, maximum-scale=5')
+    meta(name='theme-color', content='#333333')
+    meta(name='msapplication-TileColor', content='#333333')
+    meta(name='msapplication-TileImage', content='/favicons/ms-icon-144x144.png')
+
+    title= pageMeta.title + ' | ' + config.title
+
+    //- SEO / OpenGraph
+    meta(name='description', content=pageMeta.description)
+    meta(property='og:title', content=pageMeta.title)
+    meta(property='og:type', content='website')
+    meta(property='og:description', content=pageMeta.description)
+    meta(property='og:image', content=pageMeta.image)
+    meta(property='og:url', content=pageMeta.url)
+    meta(property='og:site_name', content=config.title)
+
+    //- Favicon
+    each favsize in [57, 60, 72, 76, 114, 120, 144, 152, 180]
+      link(rel='apple-touch-icon', sizes=favsize + 'x' + favsize, href='/favicons/apple-icon-' + favsize + 'x' + favsize + '.png')
+    link(rel='icon', type='image/png', sizes='192x192', href='/favicons/android-icon-192x192.png')
+    each favsize in [32, 96, 16]
+      link(rel='icon', type='image/png', sizes=favsize + 'x' + favsize, href='/favicons/favicon-' + favsize + 'x' + favsize + '.png')
+    link(rel='manifest', href='/manifest.json')
+
+    //- Site Properties
+    script.
+      var siteConfig = !{JSON.stringify(siteConfig)}; var siteLangs = !{JSON.stringify(langs)}
+
+    //- Icon Set
+    if config.theming.iconset === 'fa'
+      link(
+        type='text/css'
+        rel='stylesheet'
+        href='https://use.fontawesome.com/releases/v5.10.0/css/all.css'
+        )
+    else if config.theming.iconset === 'fa4'
+      link(
+        type='text/css'
+        rel='stylesheet'
+        href='https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
+        )
+
+    //- CSS
+    
+      
+    link(
+      type='text/css'
+      rel='stylesheet'
+      href='/css/app.dbfe5f2acb356f216013.css'
+      integrity='sha256-KvF1Z2D1jzfL0gQH3dH6HVGIy2nLzlM9ykhi82tNoXQ= sha512-TTGWItn9Fuk9lh+y05THlzQ+Az4Gi8j0LjIfosv/QNFTa1CBTL39xHpNPcYKiX5cGILpa9yXXIY95joMSTms/w=='
+      crossorigin='use-credentials'
+    )
+      
+    
+
+    //- JS
+    
+      
+    script(
+      type='text/javascript'
+      src='/js/runtime.9bd61e09a8b881828543.js'
+      integrity='sha256-cCKJV5sKXvmhhcBi1/IHDjaSYbdjL+WT62bHmQk/t/s= sha512-Wu6rRUvDtOkophjOYOX8FPxqOHSEmXzLh82liZiIsdSk48DMCCGWVthrhaTG8+B1vEfDgTryJO0Bb4FAYjXf9A=='
+      crossorigin='use-credentials'
+      )
+      
+    
+      
+    script(
+      type='text/javascript'
+      src='/js/app.dbfe5f2acb356f216013.js'
+      integrity='sha256-53bXw6tlNw/OyhMt4lr3iRv/WwjHeXcN4Hbg+XP7Ot8= sha512-MU0k5Xx7wtYOi3WH+ZLriFokwTz66YxvuFCyMpf0UU3q1aio1VHWildDzEmwJt+l79xz+8gK+Q+2KiCf3PfVQQ=='
+      crossorigin='use-credentials'
+      )
+      
+    
+
+    != analyticsCode.head
+
+    block head
+
+  body
+    != analyticsCode.bodyStart
+    block body
+    != analyticsCode.bodyEnd

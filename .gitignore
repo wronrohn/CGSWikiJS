@@ -16,11 +16,6 @@ npm/node_modules
 npm-debug.log*
 .yarn
 
-# Generated assets
-/assets
-server/views/master.pug
-server/views/legacy/master.pug
-server/views/setup.pug
 
 # Webpack
 .webpack-cache
