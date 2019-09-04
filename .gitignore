@@ -22,7 +22,7 @@ npm-debug.log*
 .fusebox
 
 # Config Files
-/config.yml
+
 
 # Data directories
 /repo
@@ -42,3 +42,4 @@ test-results/
 
 # Localization Resources
 /server/locales/**/*.yml
+
